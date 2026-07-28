@@ -146,6 +146,24 @@ td.num, th.num { text-align: right; }
 .obj-a { font-size: 13px; color: #444; line-height: 1.6; }
 .bp-closing { font-size: 13px; color: #444; margin-top: 12px; font-style: italic; }
 .narrative { font-size: 14px; line-height: 1.7; color: #444; margin-bottom: 16px; }
+.om-pill { display: inline-block; background: #3F6FA8; color: #fff !important; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 9px; border-radius: 10px; text-decoration: none; margin-left: 6px; vertical-align: middle; }
+.om-pill:hover { background: #C5A258; }
+.carousel { position: relative; margin: 8px 0 24px; }
+.car-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+.car-track::-webkit-scrollbar { height: 8px; }
+.car-track::-webkit-scrollbar-thumb { background: #C5A258; border-radius: 4px; }
+.car-track::-webkit-scrollbar-track { background: #e8e8e8; border-radius: 4px; }
+.car-item { flex: 0 0 auto; height: 320px; scroll-snap-align: center; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+.car-item img { height: 100%; width: auto; display: block; }
+.car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: none; background: rgba(27,58,92,0.85); color: #fff; font-size: 20px; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; }
+.car-btn:hover { background: #C5A258; }
+.car-prev { left: 10px; } .car-next { right: 10px; }
+.fp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 8px; }
+.fp-card { border: 1px solid #dce3eb; border-radius: 8px; overflow: hidden; background: #fff; text-align: center; }
+.fp-card img { width: 100%; display: block; }
+.fp-card-label { font-size: 12px; font-weight: 700; color: #1B3A5C; text-transform: uppercase; letter-spacing: 1px; padding: 10px; border-top: 1px solid #eee; }
+@media (max-width: 768px) { .car-item { height: 220px; } .fp-grid { grid-template-columns: 1fr; } }
+@media print { .carousel { display: none !important; } }
 .embed-map-wrap { position: relative; width: 100%; margin-bottom: 24px; border-radius: 8px; overflow: hidden; }
 .embed-map-wrap iframe { display: block; width: 100%; height: 420px; border: 0; }
 .page-break-marker { height: 4px; background: repeating-linear-gradient(90deg, #ddd 0, #ddd 8px, transparent 8px, transparent 16px); max-width: 1100px; margin: 0 auto; }
@@ -436,6 +454,31 @@ td.num, th.num { text-align: right; }
       <tr><td>12 x 3 BD / 2 BA</td><td>1,100 SF &middot; avg market $2,870</td></tr>
     </tbody></table></div>
   </div>
+  <h3 class="sub-heading">Property Gallery</h3>
+  <div class="carousel">
+    <button class="car-btn car-prev" type="button" aria-label="Previous" onclick="carScroll(-1)">&#10094;</button>
+    <div class="car-track" id="car-track">
+      <div class="car-item"><img src="images/g_interior1.jpg" alt="Unit interior" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_interior2.jpg" alt="Unit interior" loading="lazy"></div>
+      <div class="car-item"><img src="images/bedroom.jpg" alt="Bedroom" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_penthouse.jpg" alt="Penthouse interior" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_lobby.jpg" alt="Lobby" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_lounge.jpg" alt="Resident lounge" loading="lazy"></div>
+      <div class="car-item"><img src="images/lounge.jpg" alt="Resident lounge seating" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_gym.jpg" alt="Fitness center" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_office.jpg" alt="Co-working office" loading="lazy"></div>
+      <div class="car-item"><img src="images/g_rooftop.jpg" alt="Rooftop deck" loading="lazy"></div>
+      <div class="car-item"><img src="images/roofdeck.jpg" alt="Rooftop deck at dusk" loading="lazy"></div>
+    </div>
+    <button class="car-btn car-next" type="button" aria-label="Next" onclick="carScroll(1)">&#10095;</button>
+  </div>
+  <h3 class="sub-heading">Floor Plans</h3>
+  <div class="fp-grid">
+    <div class="fp-card"><a href="images/plan_a.jpg" target="_blank" rel="noopener"><img src="images/plan_a.jpg" alt="Floor Plan A" loading="lazy"></a><div class="fp-card-label">Plan A</div></div>
+    <div class="fp-card"><a href="images/plan_b.jpg" target="_blank" rel="noopener"><img src="images/plan_b.jpg" alt="Floor Plan B" loading="lazy"></a><div class="fp-card-label">Plan B</div></div>
+    <div class="fp-card"><a href="images/plan_c.jpg" target="_blank" rel="noopener"><img src="images/plan_c.jpg" alt="Floor Plan C" loading="lazy"></a><div class="fp-card-label">Plan C</div></div>
+  </div>
+  <p style="font-size:11px;color:#888;margin-top:6px;">Photos and floor plans per the property's leasing site (LBPM). Floor plans are illustrative; dimensions approximate.</p>
 </div>
 
 <!-- BUYER PROFILE -->
@@ -473,7 +516,8 @@ td.num, th.num { text-align: right; }
     <tr><td><a href='https://www.google.com/maps/place/111+N+Louise+St,+Glendale,+CA+91206/' target='_blank' rel='noopener'>111 N Louise St</a> &middot; <a href='https://www.apartments.com/glendale-ca/' target='_blank' rel='noopener' style='font-size:11px;color:#3F6FA8;text-decoration:none;'>photos &#8599;</a></td><td>Glendale</td><td class='num'>2018</td><td class='num'>65</td><td class='num'>$33,500,000</td><td class='num'>$515,385</td><td class='num'>$435</td><td class='num'>10.6 mi</td><td class='num'>Jul 2025</td></tr>
     <tr><td><a href='https://www.google.com/maps/place/1550+N+El+Centro+Ave,+Los+Angeles,+CA+90028/' target='_blank' rel='noopener'>1550 N El Centro Ave</a> &middot; <a href='https://www.apartments.com/hollywood-los-angeles-ca/' target='_blank' rel='noopener' style='font-size:11px;color:#3F6FA8;text-decoration:none;'>photos &#8599;</a></td><td>Hollywood</td><td class='num'>2016</td><td class='num'>200</td><td class='num'>$99,000,000</td><td class='num'>$495,000</td><td class='num'>$374</td><td class='num'>8.7 mi</td><td class='num'>Apr 2026</td></tr>
     <tr><td><a href='https://www.google.com/maps/place/7203+Rubio+Ave,+Van+Nuys,+CA+91406/' target='_blank' rel='noopener'>7203 N Rubio Ave</a> &middot; <a href='https://www.apartments.com/van-nuys-los-angeles-ca/' target='_blank' rel='noopener' style='font-size:11px;color:#3F6FA8;text-decoration:none;'>photos &#8599;</a></td><td>Van Nuys</td><td class='num'>2013</td><td class='num'>29</td><td class='num'>$9,500,000</td><td class='num'>$327,586</td><td class='num'>$290</td><td class='num'>3.8 mi</td><td class='num'>Jul 2026</td></tr>
-    <tr class='summary'><td colspan='4'><strong>Median (4 sold comps)</strong></td><td class='num'><strong>$30,750,000</strong></td><td class='num'><strong>$505,193</strong></td><td class='num'><strong>$371</strong></td><td class='num'>-</td><td class='num'>-</td></tr>
+    <tr><td><a href='https://www.google.com/maps/place/119+S+Los+Robles+Ave,+Pasadena,+CA+91101/' target='_blank' rel='noopener'>119 S Los Robles Ave</a> &middot; <a href='https://www.apartments.com/pasadena-ca/' target='_blank' rel='noopener' style='font-size:11px;color:#3F6FA8;text-decoration:none;'>photos &#8599;</a></td><td>Pasadena</td><td class='num'>2015</td><td class='num'>50</td><td class='num'>$22,000,000</td><td class='num'>$440,000</td><td class='num'>$364</td><td class='num'>16.9 mi</td><td class='num'>2026</td></tr>
+    <tr class='summary'><td colspan='4'><strong>Median (5 sold comps)</strong></td><td class='num'><strong>$28,000,000</strong></td><td class='num'><strong>$495,000</strong></td><td class='num'><strong>$367</strong></td><td class='num'>-</td><td class='num'>-</td></tr>
     </tbody>
   </table></div>
   <div class="comp-narratives">
@@ -481,6 +525,7 @@ td.num, th.num { text-align: right; }
     <p class="narrative"><strong>2. 111 N Louise St, Glendale</strong> &mdash; 65 units, 2018 build &mdash; nearly identical scale to the subject &mdash; sold July 2025 at $515,385/unit and $435/SF. The Glendale institutional bid frames what the subject's size class commands in premium Tri-Cities locations.</p>
     <p class="narrative"><strong>3. 1550 N El Centro Ave, Hollywood</strong> &mdash; The institutional bookend: 200 units of 2016 construction at $495,000/unit ($374/SF) in April 2026. Confirms large-scale new-vintage LA product still clears at roughly $500K/unit even in a higher-rate market.</p>
     <p class="narrative"><strong>4. 7203 N Rubio Ave, Van Nuys</strong> &mdash; The closest new-vintage comp by geography: 29 units (2013) at $327,586/unit and $290/SF, closed July 2026. The subject &mdash; larger, newer, and amenity-richer &mdash; is priced at $337K/unit, within 3% of this smaller, older asset's per-unit print.</p>
+    <p class="narrative"><strong>5. 119 S Los Robles Ave, Pasadena</strong> &mdash; The freshest datapoint: 50 units of 2015 construction, marketed at $26,000,000 and closed in 2026 at $22,000,000 &mdash; $440,000/unit and $364/SF. Near-identical scale to the subject, it marks where new-vintage 50-unit product actually clears versus its ask &mdash; and it still printed 31% above the subject on a per-unit basis.</p>
     <p class="narrative">Cap rates were not publicly disclosed on these trades; the reconciliation therefore runs on $/unit and $/SF, with the subject's own 5.50% underwritten yield as the cross-check.</p>
   </div>
 </div>
@@ -495,14 +540,12 @@ td.num, th.num { text-align: right; }
   <div class="table-scroll"><table>
     <thead><tr><th>Address</th><th>Submarket</th><th class="num">Yr</th><th class="num">Units</th><th class="num">List Price</th><th class="num">$/Unit</th><th class="num">$/SF</th><th>Status</th></tr></thead>
     <tbody>
-    <tr><td><a href='https://www.laaa.com/listings/10455-magnolia' target='_blank' rel='noopener'>10455 Magnolia Blvd</a></td><td>North Hollywood</td><td class='num'>2016</td><td class='num'>26</td><td class='num'>$9,200,000</td><td class='num'>$353,846</td><td class='num'>$389</td><td>Active &middot; LAAA / M&amp;M</td></tr>
-    <tr><td><a href='https://www.laaa.com/listings/7018-alabama' target='_blank' rel='noopener'>7018 Alabama Ave</a></td><td>Canoga Park</td><td class='num'>2020</td><td class='num'>9</td><td class='num'>$5,100,000</td><td class='num'>$566,667</td><td class='num'>$433</td><td>Active &middot; LAAA / M&amp;M</td></tr>
-    <tr><td><a href='https://www.google.com/maps/place/519+Santa+Monica+Blvd,+Santa+Monica,+CA+90401/' target='_blank' rel='noopener'>519 Santa Monica Blvd</a></td><td>Santa Monica</td><td class='num'>2012</td><td class='num'>40</td><td class='num'>$32,900,000</td><td class='num'>$822,500</td><td class='num'>$621</td><td>Active &middot; Marcus &amp; Millichap</td></tr>
-    <tr><td><a href='https://www.google.com/maps/place/119+S+Los+Robles+Ave,+Pasadena,+CA+91101/' target='_blank' rel='noopener'>119 S Los Robles Ave</a></td><td>Pasadena</td><td class='num'>2015</td><td class='num'>50</td><td class='num'>$26,000,000</td><td class='num'>$520,000</td><td class='num'>$430</td><td>Active &middot; Marcus &amp; Millichap</td></tr>
-    <tr class='summary'><td colspan='4'><strong>Average (4 active comps)</strong></td><td class='num'><strong>$18,300,000</strong></td><td class='num'><strong>$565,753</strong></td><td class='num'><strong>$468</strong></td><td>-</td></tr>
+    <tr><td><a href='https://www.laaa.com/listings/10455-magnolia' target='_blank' rel='noopener'>10455 Magnolia Blvd</a> <a href='oms/10455-magnolia-om.pdf' target='_blank' rel='noopener' class='om-pill'>OM &#8599;</a></td><td>North Hollywood</td><td class='num'>2016</td><td class='num'>26</td><td class='num'>$9,200,000</td><td class='num'>$353,846</td><td class='num'>$389</td><td>Active &middot; LAAA / M&amp;M</td></tr>
+    <tr><td><a href='https://www.google.com/maps/place/10555+Bloomfield+St,+Toluca+Lake,+CA+91602/' target='_blank' rel='noopener'>10555 Bloomfield St &middot; The Centennial</a> <a href='oms/toluca-centennial-om.pdf' target='_blank' rel='noopener' class='om-pill'>OM &#8599;</a></td><td>Toluca Lake</td><td class='num'>2023</td><td class='num'>57</td><td class='num'>$24,000,000</td><td class='num'>$421,053</td><td class='num'>$289</td><td>Active &middot; Northmarq</td></tr>
+    <tr class='summary'><td colspan='4'><strong>Average (2 active comps)</strong></td><td class='num'><strong>$16,600,000</strong></td><td class='num'><strong>$387,450</strong></td><td class='num'><strong>$339</strong></td><td>-</td></tr>
     </tbody>
   </table></div>
-  <p class="narrative">Restricting the competitive set to buildings constructed in the last 15 years leaves just four active listings across the greater LA market &mdash; and they average $565,753 per unit and $468/SF, with even the nearest benchmark (10455 Magnolia Blvd, a 2016-built 26-unit in North Hollywood) asking $353,846/unit and $389/SF. The subject at $336,765/unit and $343/SF undercuts every new-vintage listing on the market on both metrics while offering more scale than any of them. The scarcity argument is simple: a buyer who wants a 50+ unit, non-RSO, post-2010 asset in Los Angeles today has exactly one central-Valley option &mdash; the subject &mdash; and it is priced 40% below the active new-vintage average per unit.</p>
+  <p class="narrative">Restricting the competitive set to buildings constructed in the last 15 years leaves exactly two active listings competing with the subject. 10455 Magnolia Blvd, a 2016-built 26-unit in North Hollywood, asks $353,846/unit and $389/SF &mdash; above the subject on both metrics at a third of the scale. The Centennial at 10555 Bloomfield St in Toluca Lake, a 2023-built 57-unit, asks $24,000,000 ($421,053/unit) at a 5.29% cap on trailing-twelve income per the Northmarq OM &mdash; and carries six affordable units with the building marketed as subject to the LA RSO. The subject undercuts both listings by $17,000&ndash;$84,000 per unit and offers a higher going-in yield (5.50% vs the Centennial&rsquo;s 5.29% ask) while remaining fully RSO-exempt. For a buyer seeking sizable, unrestricted, new-vintage Valley product, the subject is the cleanest option on the market.</p>
 </div>
 
 <!-- FINANCIAL ANALYSIS -->
@@ -718,7 +761,7 @@ td.num, th.num { text-align: right; }
       <div class="summary-trade-prices">$22,000,000 &mdash; $23,500,000</div>
     </div>
     <h3 class="sub-heading">Pricing Rationale</h3>
-    <p>The recommendation reconciles three independent lenses. On a per-unit basis, $336,765 sits at the floor of the post-2010 comp band ($327,586&ndash;$538,462/unit) and 33% below the sold-comp median of $505,193 &mdash; a deliberate discount for the Van Nuys location and in-place lease-up work. On price-per-SF, $343 is an 8% discount to the sold-comp median of $371 and a 27% discount to the $468/SF average ask of the active new-vintage listings, despite the subject being as new or newer than every property in both sets. And on yield, the 5.50% going-in cap &mdash; underwritten with reassessed taxes, market management, and normalized on-site staffing &mdash; offers buyers a premium to what newer Encino and Glendale product commanded (implied low-4s to low-5s), compensating for submarket and occupancy.</p>
+    <p>The recommendation reconciles three independent lenses. On a per-unit basis, $336,765 sits at the floor of the post-2010 comp band ($327,586&ndash;$538,462/unit) and 32% below the sold-comp median of $495,000 &mdash; a deliberate discount for the Van Nuys location and in-place lease-up work. On price-per-SF, $343 is a 7% discount to the sold-comp median of $367 and below the $389/SF ask of the nearest competing new-vintage listing (10455 Magnolia Blvd), despite the subject being newer than all but one property in either set. And on yield, the 5.50% going-in cap &mdash; underwritten with reassessed taxes, market management, and normalized on-site staffing &mdash; offers buyers a premium to what newer Encino and Glendale product commanded (implied low-4s to low-5s), compensating for submarket and occupancy.</p>
     <p>The price is set to clear within an industry-standard 60-90 day marketing window. With the eight vacants leased at posted market rents the buyer's stabilized cap approaches 5.75% &mdash; the "heads I win" case that drives competitive bidding on lease-up stories.</p>
     <div class="condition-note"><strong>Assumptions &amp; Conditions:</strong> Underwriting derives from the owner's LBPM-prepared June 2026 rent roll and trailing operating statements (annualized where noted). Financing shown is illustrative (6.00%, 30-year amortization, 60% max LTV / 1.20x DCR sizing). Real estate taxes modeled at 1.2% of price per LA County reassessment. Final terms, prorations, and net proceeds depend on the executed contract and close date. Buyer to verify all figures &mdash; including the affordable covenant on the four LI units &mdash; in due diligence.</div>
   </div>
@@ -754,6 +797,10 @@ function updateActiveTocLink() {
   tocLinks.forEach(function(l) { l.classList.remove('toc-active'); }); if (cur) cur.classList.add('toc-active');
 }
 window.addEventListener('scroll', updateActiveTocLink); updateActiveTocLink();
+function carScroll(dir) {
+  var t = document.getElementById('car-track');
+  t.scrollBy({ left: dir * Math.round(t.clientWidth * 0.8), behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
